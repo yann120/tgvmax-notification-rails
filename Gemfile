@@ -15,6 +15,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "bulma-rails", "~> 0.7.5"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
