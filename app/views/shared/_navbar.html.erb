@@ -47,12 +47,23 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
+          <% if !user_signed_in? %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "button is-primary has-text-white" %>
+          <%= link_to "Sign In", new_user_session_path, class: "button is-light" %>
+        <% else %>
+          <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <%= current_user.email %>
           </a>
-          <a class="button is-light">
-            Log in
-          </a>
+
+          <div class="navbar-dropdown">
+            <!-- choix de l'app -->
+            <hr class="navbar-divider">
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "navbar-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+          </div>
+        </div>
+        <% end %>
         </div>
       </div>
     </div>

@@ -1,35 +1,90 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+<section class="hero is-link">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class="title is-size-1">Edit Your Registration</h1>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-three-fifths is-offset-one-fifth">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <!-- <div class="field">
+            <label class="label">Your First Name</label>
+            <div class="control has-icons-left">
+              <%#= f.text_field :firstname, class: "input", autofocus: true, placeholder: "Enter your first name" %>
+              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Your Last Name</label>
+            <div class="control has-icons-left">
+              <%#= f.text_field :lastname, class: "input", placeholder: "Enter your last name" %>
+              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+            </div>
+          </div> -->
+
+          <div class="field">
+            <label class="label">Email Address</label>
+            <div class="control has-icons-left">
+              <%= f.email_field :email, class: "input", placeholder: "Enter your email address" %>
+              <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
+            </div>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="notification is-warning">
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <label class="label">Current Password</label>
+            <div class="control has-icons-left">
+              <%= f.password_field :current_password, autocomplete: "off", class: "input", placeholder: "Confirm existing password" %>
+              <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Change Password (leave blank if you do not want to change your password)</label>
+            <div class="control has-icons-left">
+              <%= f.password_field :password, class: "input", autocomplete: "off", placeholder: "Enter your NEW password (six character minimum)" %>
+              <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Change Password Confirmation</label>
+            <div class="control has-icons-left">
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "input", placeholder: "Confirm NEW password by retyping" %>
+              <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+
+          <div class="actions is-centered is-focus-padded">
+            <%= f.submit "Update Registration Information", class: "button is-link is-success" %>
+          </div>
+
+        <% end %>
+
+        <div class="field">
+          <label class="label">Account Management</label>
+          <div class="button is-danger is-small"><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></a></div>
+        </div>
+
+      </div>
+    </div>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</section>
