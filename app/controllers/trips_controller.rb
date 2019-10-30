@@ -1,10 +1,11 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
+  
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.where(:user_id => current_user.id)
   end
 
   # GET /trips/1
@@ -68,6 +69,10 @@ class TripsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
+    end
+
+    def check_user
+      redirect_to trips_path if current_user != @trip.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
