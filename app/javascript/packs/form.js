@@ -1,10 +1,9 @@
 var options = {
     url: function (phrase) {
         if (phrase !== "") {
-            return "https://www.trainline.fr/api/v5_1/stations?context=search&q=" + phrase + "";
+            return "http://localhost:3000/api/stations?q=" + phrase + "";
         } else {
-            //duckduckgo doesn't support empty strings
-            return "https://www.trainline.fr/api/v5_1/stations?context=search&q=";
+            return "http://localhost:3000/api/stations?q=";
         }
     },
 
