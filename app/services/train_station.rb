@@ -5,6 +5,10 @@ class TrainStation
         @stations = read_train_stations()
     end
 
+    def search(station)
+        @stations.grep(/#{station}/).first(15)
+    end
+
     private
 
     def read_train_stations
