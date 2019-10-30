@@ -19,27 +19,27 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
-          <!-- <div class="field">
-            <label class="label">Your First Name</label>
-            <div class="control has-icons-left">
-              <%#= f.text_field :firstname, class: "input", autofocus: true, placeholder: "Enter your first name" %>
-              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Your Last Name</label>
-            <div class="control has-icons-left">
-              <%#= f.text_field :lastname, class: "input", placeholder: "Enter your last name" %>
-              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
-            </div>
-          </div> -->
-
           <div class="field">
             <label class="label">Email Address</label>
             <div class="control has-icons-left">
               <%= f.email_field :email, class: "input", placeholder: "Enter your email address" %>
               <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Your TVGMAX Key</label>
+            <div class="control has-icons-left">
+              <%= f.text_field :tgvmax_key, class: "input", autofocus: true, placeholder: "HC*********", required: true %>
+              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Your birthdate</label>
+            <div class="control has-icons-left">
+              <%= f.date_field :birthdate, class: "input", placeholder: "04/07/1994" %>
+              <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
             </div>
           </div>
 
