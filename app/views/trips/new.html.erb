@@ -1,5 +1,20 @@
-<h1>New Trip</h1>
+<section class="hero is-link">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <h1 class="title is-size-1">Create Trip</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
 
-<%= render 'form', trip: @trip %>
+        <%= render 'form', trip: @trip %>
 
-<%= link_to 'Back', trips_path %>
+        <%= link_to 'Back', trips_path, class: "button" %>
+    </div>
+</div>

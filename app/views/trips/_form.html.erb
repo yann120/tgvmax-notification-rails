@@ -4,14 +4,14 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :departure_station %>
-    <%= f.input :arrival_station %>
-    <%= f.input :from_date %>
-    <%= f.input :to_date %>
+    <%= f.input :departure_station, required: true %>
+    <%= f.input :arrival_station, required: true %>
+    <%= f.input :from_date, required: true %>
+    <%= f.input :to_date, required: true %>
     
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'is-primary' %>
   </div>
 <% end %>
