@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  
+  # GET /api/trips
   def stations
     stations = TrainStation.new()
     query = api_params['q']
