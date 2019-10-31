@@ -16,3 +16,7 @@
 * to_date : datetime
 * searching : boolean
 
+
+## TODO
+* TGVMAX Key validator
+* Birthdate < 28 years

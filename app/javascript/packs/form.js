@@ -7,13 +7,7 @@ var options = {
         }
     },
 
-    getValue: "Text",
-
-    ajaxSettings: {
-        dataType: "jsonp"
-    },
-
-    listLocation: "RelatedTopics",
+    getValue: "name",
 
     requestDelay: 300,
 
@@ -21,3 +15,4 @@ var options = {
 };
 
 $("#trip_departure_station").easyAutocomplete(options);
+$("#trip_arrival_station").easyAutocomplete(options);

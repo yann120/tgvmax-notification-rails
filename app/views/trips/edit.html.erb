@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
+
+
 <section class="hero is-link">
     <div class="hero-body">
         <div class="container">
@@ -9,8 +12,9 @@
         </div>
     </div>
 </section>
-
+<div class="container"> 
 <%= render 'form', trip: @trip %>
 
 <%= link_to 'Show', @trip %> |
 <%= link_to 'Back', trips_path %>
+</div>
