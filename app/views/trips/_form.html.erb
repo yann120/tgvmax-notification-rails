@@ -3,7 +3,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   
-  <% if @trip.errors %>
+  <% if @trip.errors.present? %>
       <ul class="notification is-danger">
         <p class="has-text-weight-bold">Errors: </p>
         <% @trip.errors.messages.each do |e| %>
