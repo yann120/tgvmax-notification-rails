@@ -6,12 +6,16 @@ class TrainStation
     end
 
     def search(station)
-        result = @stations.grep(/#{station}/).first(15)
+        result = @stations.grep(/#{station}/i).first(15)
         array = []
         result.each do |station|
             array << {'name' => station}
         end
         array
+    end
+
+    def verify_station(station)
+        return @stations.include?(station)
     end
 
     private
