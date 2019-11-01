@@ -30,14 +30,20 @@ class Trip < ApplicationRecord
 
   def check_dates
     return if from_time.nil? || to_time.nil? || departure_date.nil?
-    if create_date(departure_date, from_time) > create_date(departure_date, to_time)
+    from_date = create_date(departure_date, from_time)
+    to_date = create_date(departure_date, to_time)
+    puts(from_date, to_date)
+    if from_date > to_date
       errors.add(:from_time, "- the from date must finish after the from date")
+    elsif from_date == to_date
+      errors.add(:to_time, "- To time must be after from time")
     end
   end
 
   private
 
   def create_date(date, time)
-    DateTime.new(date[1],date[2],date[3],time[4],time[5])
+    d = Date.strptime(date, '%d/%m/%Y')
+    DateTime.new(d.year,d.month,d.day,time[4],time[5])
   end
 end
