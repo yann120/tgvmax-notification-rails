@@ -19,9 +19,15 @@ class Trip < ApplicationRecord
     write_attribute(:to_date, to_date)
   end
 
+  def departure_date
+    if from_date
+      from_date.strftime("%d/%m/%Y")
+    end
+  end
+
   def read_date_time
-    departure_date = from_date
-    from_time = from_date.strftime("%d/%m/%Y")
+    departure_date = from_date.strftime("%d/%m/%Y")
+    from_time = from_date
     to_time = to_date.strftime("%d/%m/%Y")
   end
 
