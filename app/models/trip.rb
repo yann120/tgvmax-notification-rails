@@ -8,14 +8,21 @@ class Trip < ApplicationRecord
   validates :arrival_station, presence: true
   validate :stations_exists
   validate :check_dates
-  before_create :set_dates
-  before_update :set_dates
+  before_create :save_dates
+  before_update :save_dates
+  
 
-  def set_dates
+  def save_dates
     from_date = create_date(departure_date, from_time)
     to_date = create_date(departure_date, to_time)
     write_attribute(:from_date, from_date)
     write_attribute(:to_date, to_date)
+  end
+
+  def read_date_time
+    departure_date = from_date
+    from_time = from_date.strftime("%d/%m/%Y")
+    to_time = to_date.strftime("%d/%m/%Y")
   end
 
   def stations_exists
