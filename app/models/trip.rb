@@ -6,10 +6,12 @@ class Trip < ApplicationRecord
   validates :departure_date, presence: true
   validates :departure_station, presence: true
   validates :arrival_station, presence: true
+  validates :from_date, presence: true
+  validates :to_date, presence: true
   validate :stations_exists
-  validate :check_dates
-  before_create :save_dates
-  before_update :save_dates
+  # validate :check_dates
+  # before_create :save_dates
+  # before_update :save_dates
   
 
   def save_dates
@@ -23,6 +25,14 @@ class Trip < ApplicationRecord
     if from_date
       from_date.strftime("%d/%m/%Y")
     end
+  end
+
+  def from_time
+    from_date
+  end
+
+  def to_time
+    to_date
   end
 
   def read_date_time
@@ -42,10 +52,7 @@ class Trip < ApplicationRecord
   end
 
   def check_dates
-    return if from_time.nil? || to_time.nil? || departure_date.nil?
-    from_date = create_date(departure_date, from_time)
-    to_date = create_date(departure_date, to_time)
-    puts(from_date, to_date)
+    return if from_date.nil? || to_date.nil? || departure_date.nil?
     if from_date > to_date
       errors.add(:from_time, "- the from date must finish after the from date")
     elsif from_date == to_date
@@ -53,10 +60,8 @@ class Trip < ApplicationRecord
     end
   end
 
-  private
-
   def create_date(date, time)
     d = Date.strptime(date, '%d/%m/%Y')
-    DateTime.new(d.year,d.month,d.day,time[4],time[5])
+    DateTime.new(d.year,d.month,d.day,time[3].to_i,time[4].to_i)
   end
 end

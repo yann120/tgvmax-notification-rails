@@ -24,11 +24,13 @@ class TripsController < ApplicationController
 
   # POST /trips
   # POST /trips.json
-  def create
-    puts trip_params
+  def create    
+    puts "trip", trip_params
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
     @trip.searching = true
+    @trip.from_date = from_date
+    @trip.to_date = to_date
 
     respond_to do |format|
       if @trip.save
@@ -44,7 +46,10 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
+    puts "trip", trip_params
     respond_to do |format|
+      @trip.from_date = from_date
+      @trip.to_date = to_date
       if @trip.update(trip_params)
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip }
@@ -67,6 +72,28 @@ class TripsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def from_date
+      departure_date = trip_params[:departure_date]
+      from_time = trip_params.select{ |k,v| k.start_with? "from_time" }.values
+      return if departure_date.nil? || departure_date.empty? || from_time.length != 5
+      @trip.create_date(departure_date, from_time)
+    end
+
+    def to_date
+      departure_date = trip_params[:departure_date]
+      to_time = trip_params.select{ |k,v| k.start_with? "to_time" }.values
+      return if departure_date.nil? || departure_date.empty? || to_time.length != 5
+      to_date = @trip.create_date(departure_date, to_time)
+    end
+
+    # def save_dates
+    #   from_time = trip_params.select{ |k,v| k.start_with? "from_time" }.values
+    #   to_time = trip_params.select{ |k,v| k.start_with? "to_time" }.values
+    #   from_date = @trip.create_date(trip_params[:departure_date], from_time)
+    #   to_date = @trip.create_date(trip_params[:departure_date], to_time)
+    # end
+
     def set_trip
       @trip = Trip.find(params[:id])
     end
