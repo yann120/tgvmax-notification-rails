@@ -9,8 +9,6 @@ class Trip < ApplicationRecord
   validates :to_date, presence: true
   validate :departure_station_existance, :arrival_station_existance
   validate :check_dates
-  # before_create :save_dates
-  # before_update :save_dates
 
   def save_dates
     from_date = create_date(departure_date, from_time)

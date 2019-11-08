@@ -23,7 +23,7 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    puts "trip", trip_params
+    puts 'trip', trip_params
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
     @trip.searching = true
@@ -44,7 +44,7 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
-    puts "trip", trip_params
+    puts 'trip', trip_params
     respond_to do |format|
       @trip.from_date = from_date
       @trip.to_date = to_date
@@ -69,32 +69,33 @@ class TripsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
 
-    def from_date
-      departure_date = trip_params[:departure_date]
-      from_time = trip_params.select{ |k| k.start_with? "from_time" }.values
-      return if departure_date.nil? || departure_date.empty? || from_time.length != 5
-      @trip.create_date(departure_date, from_time)
-    end
+  def from_date
+    departure_date = trip_params[:departure_date]
+    from_time = trip_params.select { |k| k.start_with? 'from_time' }.values
+    return if departure_date.nil? || departure_date.empty? || from_time.length != 5
 
-    def to_date
-      departure_date = trip_params[:departure_date]
-      to_time = trip_params.select{ |k| k.start_with? "to_time" }.values
-      return if departure_date.nil? || departure_date.empty? || to_time.length != 5
-      @trip.create_date(departure_date, to_time)
-    end
+    @trip.create_date(departure_date, from_time)
+  end
 
-    def set_trip
-      @trip = Trip.find(params[:id])
-    end
+  def to_date
+    departure_date = trip_params[:departure_date]
+    to_time = trip_params.select { |k| k.start_with? 'to_time' }.values
+    return if departure_date.nil? || departure_date.empty? || to_time.length != 5
 
-    def check_user
-      redirect_to trips_path if current_user != @trip.user
-    end
+    @trip.create_date(departure_date, to_time)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def trip_params
-      params.require(:trip).permit(:user_id, :departure_station, :arrival_station, :from_date, :to_date, :searching, :from_time, :to_time, :departure_date)
-    end
+  def set_trip
+    @trip = Trip.find(params[:id])
+  end
+
+  def check_user
+    redirect_to trips_path if current_user != @trip.user
+  end
+
+  def trip_params
+    params.require(:trip).permit(:user_id, :departure_station, :arrival_station, :from_date, :to_date, :searching,
+                                 :from_time, :to_time, :departure_date)
+  end
 end

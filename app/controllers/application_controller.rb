@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
-          def configure_permitted_parameters
-               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:tgvmax_key, :birthdate, :email, :password, :current_password, :password_confirmation)}
-          end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update) do |u|
+      u.permit(:tgvmax_key, :birthdate, :email, :password,
+               :current_password, :password_confirmation)
+    end
+  end
 end
