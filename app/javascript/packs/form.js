@@ -1,9 +1,9 @@
 var options = {
     url: function (phrase) {
         if (phrase !== "") {
-            return "http://localhost:3000/api/stations?q=" + phrase + "";
+            return "/api/stations?q=" + phrase + "";
         } else {
-            return "http://localhost:3000/api/stations?q=";
+            return "/api/stations?q=";
         }
     },
 
