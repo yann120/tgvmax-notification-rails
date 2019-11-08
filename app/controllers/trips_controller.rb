@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: i[show edit update destroy]
-  before_action :check_user, only: i[show, edit, update, destroy]
+  before_action :set_trip, only: %i[show edit update destroy]
+  before_action :check_user, only: %i[show edit update destroy]
 
   # GET /trips
   # GET /trips.json
