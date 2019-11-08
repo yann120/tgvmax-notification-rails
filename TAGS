@@ -1,0 +1,125 @@
+
+db/migrate/20191030095007_create_trips.rb,89
+class CreateTrips < ActiveRecord::Migration[6.0]CreateTrips1,0
+  def changechange2,0
+
+db/migrate/20191027175637_devise_create_users.rb,101
+class DeviseCreateUsers < ActiveRecord::Migration[6.0]DeviseCreateUsers3,0
+  def changechange4,0
+
+db/migrate/20191029181222_add_fields_to_user.rb,97
+class AddFieldsToUser < ActiveRecord::Migration[6.0]AddFieldsToUser1,0
+  def changechange2,0
+
+test/channels/application_cable/connection_test.rb,206
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCaseConnectionTest3,0
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCaseApplicationCable::ConnectionTest3,0
+
+test/system/trips_test.rb,58
+class TripsTest < ApplicationSystemTestCaseTripsTest3,0
+
+test/application_system_test_case.rb,95
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCaseApplicationSystemTestCase3,0
+
+test/models/trip_test.rb,54
+class TripTest < ActiveSupport::TestCaseTripTest3,0
+
+test/models/user_test.rb,54
+class UserTest < ActiveSupport::TestCaseUserTest3,0
+
+test/controllers/api_controller_test.rb,80
+class ApiControllerTest < ActionDispatch::IntegrationTestApiControllerTest3,0
+
+test/controllers/trips_controller_test.rb,84
+class TripsControllerTest < ActionDispatch::IntegrationTestTripsControllerTest3,0
+
+test/test_helper.rb,101
+class ActiveSupport::TestCaseTestCase5,0
+class ActiveSupport::TestCaseActiveSupport::TestCase5,0
+
+app/channels/application_cable/channel.rb,177
+module ApplicationCableApplicationCable1,0
+  class Channel < ActionCable::Channel::BaseChannel2,0
+  class Channel < ActionCable::Channel::BaseApplicationCable::Channel2,0
+
+app/channels/application_cable/connection.rb,195
+module ApplicationCableApplicationCable1,0
+  class Connection < ActionCable::Connection::BaseConnection2,0
+  class Connection < ActionCable::Connection::BaseApplicationCable::Connection2,0
+
+app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
+
+app/mailers/application_mailer.rb,67
+class ApplicationMailer < ActionMailer::BaseApplicationMailer1,0
+
+app/services/train_station.rb,210
+class TrainStationTrainStation3,0
+    def initializeinitialize4,0
+    def search(station)search8,0
+    def verify_station(station)verify_station17,0
+    def read_train_stationsread_train_stations23,0
+
+app/models/trip.rb,917
+class Trip < ApplicationRecordTrip1,0
+  belongs_to :useruser2,0
+  belongs_to :useruser=2,0
+  belongs_to :userbuild_user2,0
+  belongs_to :usercreate_user2,0
+  belongs_to :usercreate_user!2,0
+  attr_accessor :from_time, :to_time, :departure_datefrom_time3,0
+  attr_accessor :from_time, :to_time, :departure_datefrom_time=3,0
+  attr_accessor :from_time, :to_time, :departure_dateto_time3,0
+  attr_accessor :from_time, :to_time, :departure_dateto_time=3,0
+  attr_accessor :from_time, :to_time, :departure_datedeparture_date3,0
+  attr_accessor :from_time, :to_time, :departure_datedeparture_date=3,0
+  def save_datessave_dates17,0
+  def departure_datedeparture_date24,0
+  def from_timefrom_time30,0
+  def to_timeto_time34,0
+  def read_date_timeread_date_time38,0
+  def stations_existsstations_exists44,0
+  def check_datescheck_dates54,0
+  def create_date(date, time)create_date63,0
+
+app/models/user.rb,40
+class User < ApplicationRecordUser1,0
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+app/jobs/application_job.rb,58
+class ApplicationJob < ActiveJob::BaseApplicationJob1,0
+
+app/controllers/api_controller.rb,123
+class ApiController < ApplicationControllerApiController1,0
+  def stationsstations4,0
+  def api_paramsapi_params13,0
+
+app/controllers/trips_controller.rb,397
+class TripsController < ApplicationControllerTripsController1,0
+  def indexindex7,0
+  def showshow13,0
+  def newnew17,0
+  def editedit22,0
+  def create    create27,0
+  def updateupdate48,0
+  def destroydestroy65,0
+    def from_datefrom_date76,0
+    def to_dateto_date83,0
+    def set_tripset_trip97,0
+    def check_usercheck_user101,0
+    def trip_paramstrip_params106,0
+
+app/controllers/application_controller.rb,159
+class ApplicationController < ActionController::BaseApplicationController1,0
+          def configure_permitted_parametersconfigure_permitted_parameters8,0
+
+app/controllers/pages_controller.rb,86
+class PagesController < ApplicationControllerPagesController1,0
+  def homehome4,0
+
+config/application.rb,200
+module TgvmaxNotificationRailsTgvmaxNotificationRails9,0
+  class Application < Rails::ApplicationApplication10,0
+  class Application < Rails::ApplicationTgvmaxNotificationRails::Application10,0

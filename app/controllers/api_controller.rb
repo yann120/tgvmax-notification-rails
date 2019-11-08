@@ -1,14 +1,10 @@
 class ApiController < ApplicationController
-  
   # GET /api/trips
   def stations
-    stations = TrainStation.new()
-    query = api_params['q']
-    list = stations.search(query)
-    render json: list
+    render json: TrainStationService.search(api_params['q'])
   end
 
-  private 
+  private
 
   def api_params
     params.permit(:q)

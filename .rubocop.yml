@@ -8,36 +8,37 @@ AllCops:
     - 'support/**/*'
     - 'tmp/**/*'
     - 'test/**/*'
+    - 'TAGS'
 
-ConditionalAssignment:
+# ConditionalAssignment:
+#   Enabled: false
+# StringLiterals:
+#   Enabled: false
+# RedundantReturn:
+#   Enabled: false
+Style/Documentation:
   Enabled: false
-StringLiterals:
-  Enabled: false
-RedundantReturn:
-  Enabled: false
-Documentation:
-  Enabled: false
-WordArray:
-  Enabled: false
-AbcSize:
-  Enabled: false
-MutableConstant:
-  Enabled: false
-SignalException:
-  Enabled: false
-Casecmp:
-  Enabled: false
-CyclomaticComplexity:
-  Enabled: false
-MissingRespondToMissing:
-  Enabled: false
-MethodMissingSuper:
-  Enabled: false
+# WordArray:
+#   Enabled: false
+# AbcSize:
+#   Enabled: false
+# MutableConstant:
+#   Enabled: false
+# SignalException:
+#   Enabled: false
+# Casecmp:
+#   Enabled: false
+# CyclomaticComplexity:
+#   Enabled: false
+# MissingRespondToMissing:
+#   Enabled: false
+# MethodMissingSuper:
+#   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
-LineLength:
+Metrics/LineLength:
   Max: 120
-Style/EmptyMethod:
-  Enabled: false
+# Style/EmptyMethod:
+#   Enabled: false
 Bundler/OrderedGems:
   Enabled: false

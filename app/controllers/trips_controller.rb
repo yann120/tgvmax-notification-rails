@@ -1,17 +1,16 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
-  before_action :check_user, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_trip, only: i[show edit update destroy]
+  before_action :check_user, only: i[show, edit, update, destroy]
+
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.where(:user_id => current_user.id)
+    @trips = Trip.where(user_id: current_user.id)
   end
 
   # GET /trips/1
   # GET /trips/1.json
-  def show
-  end
+  def show; end
 
   # GET /trips/new
   def new
@@ -19,12 +18,11 @@ class TripsController < ApplicationController
   end
 
   # GET /trips/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /trips
   # POST /trips.json
-  def create    
+  def create
     puts "trip", trip_params
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
@@ -75,24 +73,17 @@ class TripsController < ApplicationController
 
     def from_date
       departure_date = trip_params[:departure_date]
-      from_time = trip_params.select{ |k,v| k.start_with? "from_time" }.values
+      from_time = trip_params.select{ |k| k.start_with? "from_time" }.values
       return if departure_date.nil? || departure_date.empty? || from_time.length != 5
       @trip.create_date(departure_date, from_time)
     end
 
     def to_date
       departure_date = trip_params[:departure_date]
-      to_time = trip_params.select{ |k,v| k.start_with? "to_time" }.values
+      to_time = trip_params.select{ |k| k.start_with? "to_time" }.values
       return if departure_date.nil? || departure_date.empty? || to_time.length != 5
-      to_date = @trip.create_date(departure_date, to_time)
+      @trip.create_date(departure_date, to_time)
     end
-
-    # def save_dates
-    #   from_time = trip_params.select{ |k,v| k.start_with? "from_time" }.values
-    #   to_time = trip_params.select{ |k,v| k.start_with? "to_time" }.values
-    #   from_date = @trip.create_date(trip_params[:departure_date], from_time)
-    #   to_date = @trip.create_date(trip_params[:departure_date], to_time)
-    # end
 
     def set_trip
       @trip = Trip.find(params[:id])
