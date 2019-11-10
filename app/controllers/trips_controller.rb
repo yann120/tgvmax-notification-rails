@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show edit update destroy]
   before_action :check_user, only: %i[show edit update destroy]
+  before_action :check_tgvmax_key, only: %i[new update]
 
   # GET /trips
   # GET /trips.json
@@ -97,5 +98,11 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:user_id, :departure_station, :arrival_station, :from_date, :to_date, :searching,
                                  :from_time, :to_time, :departure_date)
+  end
+
+  def check_tgvmax_key
+    return if current_user.tgvmax_key_valid?
+
+    redirect_to edit_user_registration_path, flash: { alert: 'You must enter a valid TGVMAX Key' }
   end
 end
