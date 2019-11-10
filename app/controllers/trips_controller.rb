@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.where(user_id: current_user.id)
+    @trips = Trip.where(user_id: current_user.id).order('from_date')
   end
 
   # GET /trips/1
