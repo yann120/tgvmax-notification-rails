@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validate :validate_age
 
   def tgvmax_key_valid?
-    tgvmax_key.match(/^HC[0-9]{9}$/)
+    tgvmax_key&.match(/^HC[0-9]{9}$/)
   end
 
   private
