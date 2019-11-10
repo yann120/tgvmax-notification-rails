@@ -26,7 +26,7 @@
 
         <tbody>
           <% @trips.each do |trip| %>
-            <tr>
+            <tr class="<%= searching_background_color(trip) %>">
               <td><%= trip.departure_station %></td>
               <td><%= trip.arrival_station %></td>
               <td><%= trip.from_date.strftime('%d/%m/%y') if trip.from_date %></td>
