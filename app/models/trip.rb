@@ -48,6 +48,8 @@ class Trip < ApplicationRecord
       errors.add(:from_time, '- the from date must finish after the from date')
     elsif from_date == to_date
       errors.add(:to_time, '- To time must be after from time')
+    elsif from_date < DateTime.now || to_date < DateTime.now
+      errors.add(:departure_date, '- The departure date must be in future')
     end
   end
 
