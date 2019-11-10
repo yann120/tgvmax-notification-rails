@@ -21,8 +21,8 @@
     <%= f.input :departure_station, required: true, autofocus: true %>
     <%= f.input :arrival_station, required: true %>
     <%= f.input :departure_date, required: true %>
-    <%= f.input :from_time, as: :time, required: true %>
-    <%= f.input :to_time, as: :time, required: true %>
+    <%= f.input :from_time, as: :time, default: Time.parse('7:00'), required: true %>
+    <%= f.input :to_time, as: :time, default: Time.parse('18:00'), required: true %>
   </div>
 
   <div class="form-actions">
