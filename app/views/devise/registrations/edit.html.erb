@@ -30,7 +30,7 @@
           <div class="field">
             <label class="label">Your TVGMAX Key</label>
             <div class="control has-icons-left">
-              <%= f.text_field :tgvmax_key, class: "input", autofocus: true, placeholder: "HC*********", required: true %>
+              <%= f.text_field :tgvmax_key, class: "input", autofocus: true, placeholder: "HC*********", required: true, pattern: "^HC[0-9]{9}", title: "Enter a correct TGVMAX key HC123456789" %>
               <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
             </div>
           </div>
