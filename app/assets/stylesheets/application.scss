@@ -12,3 +12,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.navbar {
+  display: block !important;
+  padding: 0px !important;
+}
+.navbar-brand {
+  margin-right: 0px !important;
+}
