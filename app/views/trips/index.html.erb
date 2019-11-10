@@ -12,7 +12,9 @@
 <br>
 <div class="container">
   <div class="columns is-centered">
-    <div class="column is-half">
+    <div class="column is-two-thirds has-text-centered">
+      <%= link_to 'Create New Trip', new_trip_path, class: "button is-primary has-space-around" %>
+      <br>
       <table class="table is-size-7-mobile">
         <thead>
           <tr>
@@ -41,6 +43,4 @@
     </div>
   </div>
 <br>
-
-<%= link_to 'New Trip', new_trip_path %>
 </div>
