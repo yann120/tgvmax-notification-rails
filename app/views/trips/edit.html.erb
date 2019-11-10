@@ -12,9 +12,13 @@
         </div>
     </div>
 </section>
-<div class="container"> 
-<%= render 'form', trip: @trip %>
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <%= render 'form', trip: @trip %>
 
-<%= link_to 'Show', @trip %> |
-<%= link_to 'Back', trips_path %>
+            <%= link_to 'Show', @trip %> |
+            <%= link_to 'Back', trips_path %>
+        </div>
+    </div>
 </div>
