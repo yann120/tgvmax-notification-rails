@@ -23,6 +23,8 @@
 - Tester Sidekiq-cron sur Heroku
 - Enlever boucle recherche trainline
 - Implementer bot Trainline sur Sidekiq
+https://medium.com/binar-academy/how-to-schedulling-using-sidekiq-cron-on-ruby-on-rails-c9bb321affeb
+
 
 ## Resources :
 

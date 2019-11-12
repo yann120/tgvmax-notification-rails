@@ -256,7 +256,8 @@ DEPENDENCIES
   ripper-tags
   rubocop
   sassc-rails
-  sidekiq-cron (~> 1.1)
+  sidekiq
+  sidekiq-cron
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
