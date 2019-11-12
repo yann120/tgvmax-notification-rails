@@ -15,6 +15,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "sidekiq-cron", "~> 1.1"
 
 group :development do
   gem 'rubocop', require: false
