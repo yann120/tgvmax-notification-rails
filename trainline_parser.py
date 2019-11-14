@@ -19,6 +19,6 @@ results = trainline.search(
         arrival_station=arrival_station,
         from_date=from_date,
         to_date=to_date,
-        max_price=1.0,
+        # max_price=1.0,
         transportation_mean='train')
 print(results.csv())
