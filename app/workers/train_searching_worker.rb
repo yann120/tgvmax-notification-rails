@@ -2,6 +2,7 @@ class TrainSearchingWorker
   include Sidekiq::Worker
 
   def perform
-    puts 'Hello World!'
+    hello_python = `python3 test.py`
+    puts hello_python
   end
 end
