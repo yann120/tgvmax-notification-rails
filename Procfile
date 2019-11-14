@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-trainlineworker: bundle exec sidekiq
+trainlineworker: ruby hello_world.rb
