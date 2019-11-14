@@ -1,4 +1,4 @@
 while 1
-  puts "hello world"
+  STDERR.puts "hello world"
   sleep(30)
 end
