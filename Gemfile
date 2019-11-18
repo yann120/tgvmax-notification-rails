@@ -17,6 +17,9 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'mailjet'
+gem 'shorturl'
+
 
 group :development do
   gem 'rubocop', require: false
