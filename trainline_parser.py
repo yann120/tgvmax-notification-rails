@@ -2,7 +2,7 @@ import trainline
 import sys
 
 if len(sys.argv) != 7:
-    sys.exit("usage: python3 main.py birthdate tgvmax_key departure_station arrival_station from_date to_date\nexemple : python3 main.py 04/09/1992 HC123456789 Paris Nice '10/05/2019 08:00' '10/05/2019 21:00'")
+    sys.exit("usage: python3 trainline_parser.py birthdate tgvmax_key departure_station arrival_station from_date to_date\nexemple : python3 main.py 04/09/1992 HC123456789 Paris Nice '10/05/2019 08:00' '10/05/2019 21:00'")
 
 birthdate = sys.argv[1]
 tgvmax_key = sys.argv[2]
