@@ -1,4 +1,3 @@
-ENV['RAILS_ENV'] = "production"
 require './config/environment.rb'
 
 class TrainlineSearch
@@ -10,8 +9,12 @@ class TrainlineSearch
         next if trip_is_outdated?(trip_to_search)
         puts Time.now.strftime("%H:%M") + " Recherche d'un train de #{trip_to_search["departure_station"]} a #{trip_to_search["arrival_station"]} entre le #{trip_to_search["from_date"]} et #{trip_to_search["to_date"]}"
         csv_result = trainline_query(trip_to_search)
+        desactivate_searching(trip_to_search) && next if csv_result.nil?
         search_results = csv_to_array(csv_result)
-        if tgvmax_train = tgvmax_inside?(search_results)
+        if search_results === false
+          p "Error in parsing trainline for this trip", trip_to_search
+          desactivate_searching(trip_to_search)
+        elsif tgvmax_train = tgvmax_inside?(search_results)
           new_tgvmax_available(trip_to_search, tgvmax_train)
         else
 					puts Time.now.strftime("%H:%M") + " Aucun train dispo de #{trip_to_search["departure_station"]} a #{trip_to_search["arrival_station"]} entre le #{trip_to_search["from_date"]} et #{trip_to_search["to_date"]}"
@@ -31,7 +34,12 @@ class TrainlineSearch
 
     query = "python3 trainline_parser.py \'#{birthdate}\' \'#{tgvmax_key}\' \'#{departure_station}\' \'#{arrival_station}\' \'#{from_date}\' \'#{to_date}\'"
     puts query
-    `#{query}`
+    begin
+      `#{query}`
+    rescue Errno::ENOENT, Errno::EACCES
+      puts 'Error in Python script'
+      return false
+    end
   end
 
   def desactivate_searching(trip)
@@ -125,6 +133,7 @@ class TrainlineSearch
   end
 
   def csv_to_array(string)
+    return false if string.empty?
     string = string.chomp
     string = string.gsub(';', ',')
     csv = CSV::parse(string)
