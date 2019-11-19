@@ -19,7 +19,7 @@ gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'mailjet'
 gem 'shorturl'
-
+gem 'csv'
 
 group :development do
   gem 'rubocop', require: false

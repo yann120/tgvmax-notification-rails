@@ -6,11 +6,7 @@ class TrainStationService
   class << self
     def search(station)
       results = stations.grep(/#{station}/i).first(15)
-      array = []
-      results.each do |result|
-        array << { 'name' => result }
-      end
-      array
+      results.map { |result| { 'name' => result } }
     end
 
     def station_exists?(station)

@@ -16,6 +16,7 @@ class TrainlineSearch
         else
 					puts Time.now.strftime("%H:%M") + " Aucun train dispo de #{trip_to_search["departure_station"]} a #{trip_to_search["arrival_station"]} entre le #{trip_to_search["from_date"]} et #{trip_to_search["to_date"]}"
         end
+        sleep(5)
       end
     end
   end
@@ -35,7 +36,7 @@ class TrainlineSearch
 
   def desactivate_searching(trip)
     trip.searching = false
-    trip.save
+    trip.save(validate: false)
   end
 
   def trip_is_valid?(trip)
@@ -66,7 +67,6 @@ class TrainlineSearch
   end
 
   def notify_user(trip, train)
-    p train
     Mailjet.configure do |config|
       config.api_key = ENV['MJ_APIKEY_PUBLIC']
       config.secret_key = ENV['MJ_APIKEY_PRIVATE']
